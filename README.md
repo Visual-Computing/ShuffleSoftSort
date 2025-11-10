@@ -1,14 +1,49 @@
-# PERMUTATION LEARNING WITH ONLY N PARAMETERS: FROM SOFTSORT TO SELF-ORGANIZING GAUSSIANS
-
-**Kai Uwe Barthel, HTW Berlin, Germany; Florian Barthel, Peter Eisert***
-***Fraunhofer HHI / HU Berlin, Germany
-
-### Abstract
-
-Permutation learning is essential for organizing high-dimensional data in optimization and machine learning. Current methods like Gumbel-Sinkhorn require $\mathbf{N^2}$ parameters for $\mathbf{N}$ objects, operating on the full permutation matrix. While low-rank approximations offer some reduction to $\mathbf{2NM}$ (with $\mathbf{M \ll N}$), they still create a computational bottleneck for very large datasets. SoftSort, a continuous relaxation of the argsort operator, enables differentiable 1D sorting but struggles with multidimensional data and complex permutations. We introduce a novel method for learning permutations using only $\mathbf{N}$ parameters, dramatically reducing storage costs. Our method extends SoftSort by iteratively shuffling the $\mathbf{N}$ indices of the elements to be sorted and applying a few SoftSort optimization steps per iteration. This significantly improves sorting quality, especially for multidimensional data and complex criteria, outperforming pure SoftSort. Our method offers superior memory efficiency and scalability while maintaining high-quality permutation learning. Its drastically reduced memory requirements make it ideal for large-scale optimization tasks like "Self-Organizing Gaussians", where efficient and scalable permutation learning is critical.
+# ShuffleSoftSort - Permutation Learning with Only N Parameters
 
 
-## Release
+**Kai Uwe Barthel (1), Florian Barthel (2), Peter Eisert (2)**
+1: HTW Berlin, Germany, 2: Fraunhofer HHI / HU Berlin, Germany
+
+
+## 🚀 A Scalable Approach to Permutation Learning
+
+Existing methods for **permutation learning**, such as Gumbel-Sinkhorn, are **computationally expensive**, scaling with $O(N^2)$ parameters, making them impractical for large datasets. While low-rank approximations offer some relief, they do not fully solve the scalability issue.
+
+Furthermore, state-of-the-art differentiable sorting techniques like **SoftSort** are limited to one-dimensional data and fail when applied to complex, **multidimensional data** structures.
+
+This paper introduces **ShufflSoftSort**, a novel permutation learning method that achieves **significantly improved scalability** and sorting quality.
+
+* **Efficiency:** It requires only **$O(N)$ parameters**, a dramatic reduction from prior $O(N^2)$ methods.
+* **Approach:** It works by **iteratively applying SoftSort** in a strategic manner to handle multidimensional inputs effectively.
+
+This makes the method **ideal for large-scale tasks** requiring efficient permutation learning, such as the *Self-Organizing Gaussians* application.
+
+
+### Principle
+
+<p align="center">
+<img src="images/permutation_learning.png" width="80%" title="" alt="main_pic">
+</p>
+
+In the following ShuffleSoftSort toy example, colors are sorted in 1D. The loss is calculated on the reverse-shuffled output, which helps to refine the permutation and to overcome the limitations of SoftSort.
+<p align="center">
+<img src="images/indices_swap.png" width="70%" title="" alt="main_pic">
+</p>
+
+### Algorithm
+<p align="center">
+<img src="images/ShuffleSoftSort.png" width="100%" title="" alt="main_pic">
+</p>
+
+### Properties
+<p align="center">
+<img src="images/table.png" width="100%" title="" alt="main_pic">
+</p>
+
+### Example Implementation
+Example Pytorch notebooks can be found [here](https://github.com/Visual-Computing/ShuffleSoftSort/tree/main/python).
+
+### Release
 
 - [2025/09/11]  [Permutation Learning with Only N Parameters: From SoftSort to Self-Organizing Gaussians](https://eurasip.org/Proceedings/Eusipco/Eusipco2025/pdfs/0001892.pdf).
 
