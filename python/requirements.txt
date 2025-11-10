@@ -1,0 +1,6 @@
+numpy
+pillow
+matplotlib
+scipy
+lap
+torch
