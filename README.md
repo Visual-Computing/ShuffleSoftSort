@@ -15,13 +15,13 @@ This is the official repository for the EUSIPCO 2025 paper:
 
 ### 💡 The Problem: Scalability in Permutation Learning
 
-* While Gumbel-Sinkhorn is powerful, its O(N2) parameter complexity makes it impractical for large datasets. 
+* While Gumbel-Sinkhorn is powerful, its $O(N^2)$ parameter complexity makes it impractical for large datasets. 
 * Conversely, SoftSort is memory-efficient but its one-dimensional nature makes it unsuitable for complex, multidimensional data.
 
 
 ### 🚀 Our Solution: ShuffleSoftSort
 
-We propose **ShuffleSoftSort**, a novel permutation learning method that achieves both **significantly improved efficiency** and high sorting quality:
+We propose **ShuffleSoftSort**, a novel permutation learning method that achieves both **significantly improved efficiency** and **high sorting quality**:
 
 * **Efficiency:** ShuffleSoftSort requires only **$N$ parameters**, a dramatic, linear reduction from prior $N^2$ methods.
 * ShuffleSoftSort: **Improves permutation** learning by iteratively applying SoftSort to randomly shuffled elements.
@@ -32,7 +32,7 @@ This makes the method **ideal for large-scale tasks** requiring efficient permut
 
 ### 🔬 Principle and Properties
 #### Permutation Learning Overview
-The core task of permutation learning is to find a permutation matrix $\mathbf{P}$ that maps an input $\mathbf{X}$ to a desired ordered output $\mathbf{X_{sort}}$.<p align="center"><img src="https://github.com/Visual-Computing/ShuffleSoftSort/raw/main/images/permutation_learning.png" width="80%" alt="Diagram showing the general permutation learning process where an input vector X is permuted by P to result in Y."></p>
+The core task of permutation learning is to find a permutation matrix $\mathbf{P}$ that maps an input $\mathbf{X}$ to a desired ordered output $\mathbf{X_{sort}}$.<p align="center"><img src="https://github.com/Visual-Computing/ShuffleSoftSort/raw/main/images/permutation_learning.png" width="90%" alt="Diagram showing the general permutation learning process where an input vector X is permuted by P to result in Y."></p>
 
 #### The ShuffleSoftSort Mechanism
 ShuffleSoftSort leverages the efficiency of SoftSort while extending its capabilities to multidimensional data. The image below illustrates the core idea: colors (data points) are sorted in 1D space. By calculating the loss on the reverse-shuffled output, the network is forced to learn a better global permutation that effectively refines the sorting and overcomes the local constraints of SoftSort.
@@ -41,7 +41,7 @@ ShuffleSoftSort leverages the efficiency of SoftSort while extending its capabil
 
 #### Algorithm
 The full iterative algorithm for ShuffleSoftSort is detailed below:
-<p> <img src="https://github.com/Visual-Computing/ShuffleSoftSort/raw/main/images/ShuffleSoftSort.png" width="80%" alt="Flowchart of the ShuffleSoftSort algorithm, detailing the steps of permutation, soft sorting, and loss calculation."> </p>
+<p> <img src="https://github.com/Visual-Computing/ShuffleSoftSort/raw/main/images/ShuffleSoftSort.png" width="90%" alt="Flowchart of the ShuffleSoftSort algorithm, detailing the steps of permutation, soft sorting, and loss calculation."> </p>
 
 #### 📊 Comparison of Properties
 
